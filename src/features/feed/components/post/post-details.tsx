@@ -22,6 +22,7 @@ type PostDetailsProps = {
 };
 export const PostDetails = ({ postPromise }: PostDetailsProps) => {
   const commentsRef = useRef<HTMLDivElement | null>(null);
+  const textAreaRef = useRef<HTMLTextAreaElement | null>(null);
   const post = use(postPromise);
 
   if (!post) notFound();
@@ -34,8 +35,8 @@ export const PostDetails = ({ postPromise }: PostDetailsProps) => {
       });
 
       setTimeout(() => {
-        commentsRef.current?.focus();
-      }, 300);
+        textAreaRef.current?.focus();
+      }, 2000);
     }
   };
 
@@ -112,7 +113,11 @@ export const PostDetails = ({ postPromise }: PostDetailsProps) => {
           </CardContent>
           <Separator />
           <CardContent className="px-6 md:px-16 pb-5">
-            <PostComments post={post} commentRef={commentsRef} />
+            <PostComments
+              post={post}
+              commentRef={commentsRef}
+              textAreaRef={textAreaRef}
+            />
           </CardContent>
         </Card>
         <aside className=" w-full lg:w-80 space-y-4">
