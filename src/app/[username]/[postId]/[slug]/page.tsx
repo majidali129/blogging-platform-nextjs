@@ -1,6 +1,5 @@
 import { PostDetails } from "@/features/feed/components/post/post-details";
 import { getPost } from "@/features/feed/queries/get-post";
-import React from "react";
 
 type PostDetailsPageProps = {
   params: Promise<{ username: string; postId: string }>;
